@@ -16,7 +16,7 @@
         <div class="col-sm-8">
           <div class="form-group">
             <label for="nome">Nome:</label>
-            <input type="text" name="name" class="form-control">
+            <input placeholder="{{.Name}}" type="text" name="name" class="form-control">
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
         <div class="col-sm-8">
           <div class="form-group">
             <label for="description">Descrição:</label>
-            <input type="text" name="description" class="form-control">
+            <input placeholder="{{.Description}}" type="text" name="description" class="form-control">
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
         <div class="col-sm-2">
           <div class="form-group">
             <label for="price">Preço:</label>
-            <input type="number" name="price" class="form-control" step="0.01">
+            <input placeholder="{{.Price}}" type="number" name="price" class="form-control" step="0.01">
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
         <div class="col-sm-2">
           <div class="form-group">
             <label for="amount">Quantidade:</label>
-            <input type="number" name="amount" class="form-control">
+            <input placeholder="{{.Amount}}" type="number" name="amount" class="form-control">
           </div>
         </div>
       </div>

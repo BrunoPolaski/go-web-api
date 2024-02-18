@@ -71,3 +71,18 @@ func DeleteProduct(id string) {
 	deleteProduct.Exec(id)
 	defer db.Close()
 }
+
+func SelectProductById(id string) Product {
+	db := db.ConnectToDB()
+
+	result := db.QueryRow("SELECT * FROM products WHERE id = ?", id)
+
+	p := Product{}
+	err := result.Scan(&p.Id, &p.Name, &p.Description, &p.Price, &p.Amount)
+
+	if err != nil {
+		panic(err.Error())
+	}
+	defer db.Close()
+	return p
+}
