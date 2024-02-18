@@ -1,20 +1,12 @@
 package main
 
 import (
-	"html/template"
 	"net/http"
 
-	"github.com/BrunoPolaski/go-web-api/models"
+	"github.com/BrunoPolaski/go-web-api/routes"
 )
 
-var temp = template.Must(template.ParseGlob("templates/*.html"))
-
 func main() {
-	http.HandleFunc("/", index)
+	routes.LoadRoutes()
 	http.ListenAndServe(":8000", nil)
-}
-
-func index(w http.ResponseWriter, r *http.Request) {
-	products := models.SelectProducts()
-	temp.ExecuteTemplate(w, "Index", products)
 }
