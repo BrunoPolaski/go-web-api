@@ -33,16 +33,29 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 		}
 		models.InsertProduct(name, description, price, amount)
 	}
-	http.Redirect(w, r, "/", 301)
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
 
 func Delete(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Query().Get("id")
 	models.DeleteProduct(id)
-	http.Redirect(w, r, "/", 301)
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
 
 func Edit(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "POST" {
+		name := r.FormValue("name")
+		description := r.FormValue("description")
+
+		id, err := strconv.Atoi(r.FormValue("id"))
+		price, err := strconv.ParseFloat(r.FormValue("price"), 64)
+		amount, err := strconv.Atoi(r.FormValue("amount"))
+		if err != nil {
+			panic(err.Error())
+		}
+		models.UpdateProduct(id, amount, name, description, price)
+		http.Redirect(w, r, "/", http.StatusMovedPermanently)
+	}
 	id := r.URL.Query().Get("id")
 	product := models.SelectProductById(id)
 	temp.ExecuteTemplate(w, "Edit", product)

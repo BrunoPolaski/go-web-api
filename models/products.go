@@ -86,3 +86,19 @@ func SelectProductById(id string) Product {
 	defer db.Close()
 	return p
 }
+
+func UpdateProduct(id, amount int, name, description string, price float64) {
+	db := db.ConnectToDB()
+
+	stmt := "UPDATE products SET name = ?, description = ?, price = ?, amount = ? WHERE id = ?"
+
+	editResult, err := db.Prepare(stmt)
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	editResult.Exec(name, description, price, amount, id)
+
+	defer db.Close()
+}
