@@ -11,12 +11,13 @@
         <p class="lead">Insira os detalhes para atualizar</p>
       </div>
     </div>
-    <form method="POST" action="insert">
+    <form method="POST" action="update">
+      <input value="{{.Id}}" type="text" name="id" hidden>
       <div class="row">
         <div class="col-sm-8">
           <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input placeholder="{{.Name}}" type="text" name="name" class="form-control">
+            <label for="name">Nome:</label>
+            <input value="{{.Name}}" type="text" name="name" class="form-control">
           </div>
         </div>
       </div>
@@ -24,7 +25,7 @@
         <div class="col-sm-8">
           <div class="form-group">
             <label for="description">Descrição:</label>
-            <input placeholder="{{.Description}}" type="text" name="description" class="form-control">
+            <input value="{{.Description}}" type="text" name="description" class="form-control">
           </div>
         </div>
       </div>
@@ -32,7 +33,7 @@
         <div class="col-sm-2">
           <div class="form-group">
             <label for="price">Preço:</label>
-            <input placeholder="{{.Price}}" type="number" name="price" class="form-control" step="0.01">
+            <input value="{{.Price}}" type="number" name="price" class="form-control" step="0.01">
           </div>
         </div>
       </div>
@@ -40,11 +41,11 @@
         <div class="col-sm-2">
           <div class="form-group">
             <label for="amount">Quantidade:</label>
-            <input placeholder="{{.Amount}}" type="number" name="amount" class="form-control">
+            <input value="{{.Amount}}" type="number" name="amount" class="form-control">
           </div>
         </div>
       </div>
-      <button type="submit" value="salvar" class="btn btn-success">Atualizar</button>
+      <button type="submit" value="atualizar" class="btn btn-success">Atualizar</button>
       <a class="btn btn-info" href="/">Voltar</a>
     </form>
   </div>
